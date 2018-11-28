@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    
+    <!-- 定义别名 -->
+     <typeAliases>
+<!--         <package name="tk.mybatis.simple.model"/> -->
+		<typeAlias alias="sysRole" type="com.yunlovec.simple.po.SysRole"/>
+    </typeAliases>
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false"/>
+                <property name="username" value="mybatis"/>
+                <property name="password" value="mybatis"/>
+            </dataSource>
+        </environment>
+    </environments>
+	<!-- 定义映射器 -->
+	<!-- 映射器是由java接口和XML文件（或注解）共同组成的，它的作用如下 -->
+	<!-- 1、定义参数类型 -->
+	<!-- 2、描述缓存 -->
+	<!-- 3、描述SQL语句 -->
+	<!-- 4、定义查询结果和POJO的映射关系 -->
+    <mappers>
+        <mapper resource="com/yunlovec/simple/mapper/SysRoleMapper.xml"/>
+    </mappers>
+</configuration>

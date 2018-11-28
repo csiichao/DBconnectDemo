@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+	<!-- 定义命名空间的SQL Mapper，这个命名空间和定义的全局限定名是一致的 -->
+<mapper namespace="com.yunlovec.simple.mapper.SysRoleMapper">
+	<select id="getRole" parameterType="long" resultType="sysRole">
+		  select id, role_name, enabled, create_by, create_time From sys_role where id = #{id}
+	</select>
+</mapper>

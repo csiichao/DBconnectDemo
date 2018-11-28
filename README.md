@@ -33,6 +33,12 @@
          - 这个文件是我们在配置文件mybatis-config.xml中配置的，所以Mybatis会读取这个配置文件，生成映射器。
          - 定义一个命名空间的SQL Mapper，这个命名空间和我们定义的接口的全限定名是一致的。
          - 用一个select元素定义一个查询SQL，id和Mapper定义的接口方法一致，parameter是传递SQL的参数类型，resultType是返回的数据类型，在mybatis-config.xml中定义的别名。
- 
+- 编写一个demo需要步骤
+   - 第一步、编写一个配置mybatis-config.xml
+   - 第二步、编写一个Mapper.xml
+      - 用来配置SQL和接口MAP映射关系
+   - 第三步、编写一个POJO
+   - 第四步、编写一个Mapper接口
+      - 只定义接口，定义的方法是Mapper.xml中定义的id
 
       

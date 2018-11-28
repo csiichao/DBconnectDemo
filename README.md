@@ -40,5 +40,24 @@
    - 第三步、编写一个POJO
    - 第四步、编写一个Mapper接口
       - 只定义接口，定义的方法是Mapper.xml中定义的id
+## Mybatis的生命周期
+### SqlSessionFactoryBuilder
+- SqlSessionFactoryBuilder 是利用XML 或者java编码获得资源来构建SqlSessionFactory的，通过它可以构建多个SessionFactory
+- 它的作用是一个构建器，一旦构建了SqlSessionFactory，他的作用就完结了，就可以回收了。
+- 它的生命周期只存在于方法的局部，它的作用就是生成SqlSessionFactory对象。
+### SqlSessionFactory
+- SqlSessionFactory的作用是SqlSession，是一个会话，相当于JDBC中的Connection对象。
+- 每次应用程序访问数据库，就要通过SqlSessionFactory创建SqlSession；SqlSessionFactory应该在Mybatis应用的**整个生命周期**。
+- 如果多次创建同一个数据的SqlSessionFactory ，则每次创建SqlSessionFactory会打开多个数据库连接，连接资源会被耗尽，所有采用**单例模式**。
+### SqlSession
+- 是一个会话，相当于JDBC的一个Connection对象，它的生命周期应该是请求数据库处理事务的过程。
+- 是一个线程不安全的对象，多线程时操作数据库需要注意隔离级别，数据库锁等高级特性。
+- 每次创建的SqlSession都必须及时关闭它。
+### Mapper
+- Mapper 是一个接口，而没有实现类，它的作用是发送SQL。
+- 它应该在一个SqlSession事务方法之内，是一个方法级别的东西。
+- 它就像JDBC中的一条SQL语法的执行，最大范围和SqlSession相同。
+- 尽管想一直保存着Mapper，但很难控制，所以尽量在一个SqlSession事务的方法中使用它，然后废弃掉。
+
 
       
